@@ -81,11 +81,11 @@ func OCI1FromManifest(manifest []byte) (*OCI1, error) {
 }
 
 // OCI1FromComponents creates an OCI1 manifest instance from the supplied data.
-func OCI1FromComponents(config imgspecv1.Descriptor, layers []imgspecv1.Descriptor) *OCI1 {
+func OCI1FromComponents(mediaType string, config imgspecv1.Descriptor, layers []imgspecv1.Descriptor) *OCI1 {
 	return &OCI1{
 		manifest{
 			Versioned: specs.Versioned{SchemaVersion: 2},
-			MediaType: imgspecv1.MediaTypeImageManifest,
+			MediaType: mediaType,
 			Config:    config,
 			Layers:    layers,
 		},
