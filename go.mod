@@ -22,6 +22,7 @@ require (
 	github.com/opencontainers/selinux v1.5.2
 	github.com/ostreedev/ostree-go v0.0.0-20190702140239-759a8c1ac913
 	github.com/pkg/errors v0.9.1
+	github.com/prometheus/common v0.6.0
 	github.com/sirupsen/logrus v1.6.0
 	github.com/stretchr/testify v1.6.0
 	github.com/ulikunitz/xz v0.5.7

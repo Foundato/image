@@ -5,6 +5,8 @@ import (
 	"io"
 	"time"
 
+	"github.com/prometheus/common/log"
+
 	"github.com/containers/image/v5/docker/reference"
 	compression "github.com/containers/image/v5/pkg/compression/types"
 	digest "github.com/opencontainers/go-digest"
@@ -373,6 +375,8 @@ type DeltaImageDestination interface {
 func ImageDestinationGetLayerDeltaData(dst ImageDestination, ctx context.Context, diffID digest.Digest) (DeltaDataSource, error) {
 	if d, ok := dst.(DeltaImageDestination); ok {
 		return d.GetLayerDeltaData(ctx, diffID)
+	} else {
+		log.Warnf("Unable to get layer delta data for ref: %s because image destination %T does not support deltas", dst.Reference().StringWithinTransport(), dst)
 	}
 	return nil, nil
 
